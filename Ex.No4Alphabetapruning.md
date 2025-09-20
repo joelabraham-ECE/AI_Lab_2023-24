@@ -15,6 +15,7 @@ Write a Alpha beta pruning algorithm to find the optimal value of MAX Player fro
 9.  Stop the program. 
 
 ### Program:
+```
 # Initial values of Alpha and Beta
 MAX, MIN = 1000, -1000
 # Returns optimal value for current player
@@ -50,7 +51,10 @@ def minimax(depth, nodeIndex, maximizingPlayer,values, alpha, beta):
         return best
 values = [3, 5, 6, 9, 1, 2, 0, -1]
 print("The optimal value is :", minimax(0, 0, True, values, MIN, MAX))
-Output:
-image
+```
+
+
+### Output:
+<img width="483" alt="image" src="https://github.com/Vineesha29031970/AI_Lab_2023-24/assets/133136880/a8999b67-6d6a-4d5a-ae56-40ca477560e8">
 ### Result:
 Thus the best score of max player was found using Alpha Beta Pruning.
