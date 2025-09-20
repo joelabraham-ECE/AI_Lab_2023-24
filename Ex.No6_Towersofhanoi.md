@@ -15,23 +15,45 @@ To  write  a logic program  to solve Towers of Hanoi problem  using SWI-PROLOG.
 
 ### Program:
 ```
-move(1,X,Y,_) :-  
-    write('Move top disk from '), 
-    write(X), 
-    write(' to '), 
-    write(Y), 
-    nl. 
-move(N,X,Y,Z) :- 
-    N>1, 
-    M is N-1, 
-    move(M,X,Z,Y), 
-    move(1,X,Y,_), 
-    move(M,Z,Y,X).
+# Initial values of Alpha and Beta
+MAX, MIN = 1000, -1000
+# Returns optimal value for current player
+#(Initially called for root and maximizer)
+def minimax(depth, nodeIndex, maximizingPlayer,values, alpha, beta):
+# Terminating condition. i.e
+# leaf node is reached
+    if depth == 3:
+       return values[nodeIndex]
+   
+    if maximizingPlayer:
+        best = MIN
+        # Recur for left and right children
+        for i in range(0, 2):
+          val = minimax(depth + 1, nodeIndex * 2 + i,False, values,alpha, beta)
+          best = max(best, val)
+          alpha = max(alpha, best)
+          # Alpha Beta Pruning
+          if beta <= alpha:
+             break
+        return best
+    else:
+        best = MAX
+        # Recur for left and
+        # right children
+        for i in range(0, 2):
+            val = minimax(depth + 1, nodeIndex * 2 + i,True, values, alpha,beta)
+            best = min(best, val)
+            beta = min(beta, best)
+            # Alpha Beta Pruning
+            if beta <= alpha:
+               break
+        return best
+values = [3, 5, 6, 9, 1, 2, 0, -1]
+print("The optimal value is :", minimax(0, 0, True, values, MIN, MAX))
 ```
 
 
-
 ### Output:
-<img width="490" alt="image" src="https://github.com/Vineesha29031970/AI_Lab_2023-24/assets/133136880/49260e13-20fa-4228-9196-80bc3d2653aa">
+<img width="483" alt="image" src="https://github.com/Vineesha29031970/AI_Lab_2023-24/assets/133136880/a8999b67-6d6a-4d5a-ae56-40ca477560e8">
 ### Result:
 Thus the solution of Towers of Hanoi problem was found by logic programming.
