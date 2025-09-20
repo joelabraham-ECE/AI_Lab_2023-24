@@ -58,6 +58,5 @@ print("The optimal value is :", minimax(0, 0, True, values, MIN, MAX))
 <img width="483" alt="image" src="https://github.com/Vineesha29031970/AI_Lab_2023-24/assets/133136880/a8999b67-6d6a-4d5a-ae56-40ca477560e8">
 
 
-
 ### Result:
 Thus the best score of max player was found using Alpha Beta Pruning.
